@@ -1,0 +1,31 @@
+name: CD - Deploy to EC2
+
+on:
+  workflow_run:
+    workflows: ["CI - Build & Push Docker Image"]   # exactly the CI workflow name
+    types:
+      - completed
+
+jobs:
+  deploy:
+    # only run the deploy job when CI succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH to EC2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            IMAGE=${{ secrets.DOCKER_USERNAME }}/myapp
+            TAG=${{ github.event.workflow_run.head_sha }}
+            sudo apt-get update -y
+            sudo apt-get install -y docker.io apache2
+            sudo docker rm -f myapp || true
+            sudo docker pull $IMAGE:$TAG
+            sudo docker run -d --name myapp -p 6002:80 $IMAGE:$TAG
+            sudo systemctl restart apache2
+----
