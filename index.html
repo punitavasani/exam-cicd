@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DevOps Engineer Resume</title>
+    <style>
+        :root {
+            --primary: #22313f;
+            --accent: #a675dd;
+            --bg: #f4f7fa;
+            --text: #222;
+            --card: #fff;
+            --shadow: 0 4px 16px rgba(44,62,80,0.10);
+            --gradient: linear-gradient(90deg, #535ce4 0%, #2d3e50 100%);
+            --border: 1px solid #e2e8f0;
+        }
+        body {
+            background: var(--bg);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 48px auto;
+            background: var(--card);
+            box-shadow: var(--shadow);
+            border-radius: 14px;
+            padding: 48px 36px;
+            border: var(--border);
+            position: relative;
+        }
+        .container:before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 8px;
+            border-radius: 14px 14px 0 0;
+            background: var(--gradient);
+        }
+        header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 28px;
+            margin-bottom: 38px;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 36px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 4px 16px rgba(0,191,174,0.18);
+        }
+        .title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .contact {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .section {
+            margin-bottom: 38px;
+        }
+        .section-title {
+            font-size: 1.35rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 18px;
+            border-left: 5px solid var(--accent);
+            padding-left: 14px;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #e0f7fa 0%, #fff 100%);
+            border-radius: 6px;
+        }
+        .skills-list, .exp-list, .edu-list, .cert-list, .projects-list, .achieve-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-list li {
+            display: inline-block;
+            background: var(--bg);
+            color: var(--primary);
+            border-radius: 22px;
+            padding: 8px 22px;
+            margin: 7px 10px 7px 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+        .skills-list li:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.07);
+        }
+        .exp-list li, .edu-list li, .cert-list li, .projects-list li, .achieve-list li {
+            margin-bottom: 20px;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 18px 22px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            position: relative;
+            border: 1px solid #e0e0e0;
+        }
+        .exp-role {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+        .exp-company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .exp-date {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 1rem;
+            color: #888;
+        }
+        .exp-desc {
+            margin-top: 10px;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .exp-desc ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .edu-degree, .cert-title, .proj-title, .achieve-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.08rem;
+        }
+        .edu-school, .cert-org {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .edu-date, .cert-date {
+            font-size: 1rem;
+            color: #888;
+            float: right;
+        }
+        .proj-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        .proj-link:hover {
+            text-decoration: underline;
+        }
+        .proj-desc {
+            margin-top: 10px;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .achieve-title {
+            margin-bottom: 6px;
+        }
+        .achieve-desc {
+            font-size: 1rem;
+            color: #444;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 18px 8px; }
+            header { flex-direction: column; align-items: flex-start; }
+            .avatar { margin-bottom: 18px; margin-right: 0; }
+            .exp-date, .edu-date, .cert-date { position: static; float: none; display: block; margin-top: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Avatar" class="avatar">
+            <div>
+                <div class="title">Punita Vasani</div>
+                <div class="subtitle">Junior DevOps Engineer</div>
+                <div class="contact">
+                    <span>Email: <a href="mailto:punitavsani@gmail.com">laxmisolanki24793@gmail.com</a></span> |
+                    <span>Phone: <a href="tel:+15551234567">+1 555-123-4567</a></span> |
+                    <span>Location: Seattle, WA</span> |
+                    <span>LinkedIn: <a href="https://www.linkedin.com/in/punitavsani156" target="_blank">punitavsani</a></span> |
+                    <span>GitHub: <a href="https://github.com/punitavsani" target="_blank">Punita</a></span>
+                </div>
+            </div>
+        </header>
+        <section class="section">
+            <div class="section-title">Professional Summary</div>
+            <p>
+                Results-driven DevOps Engineer with 8+ years of experience in automating, optimizing, and securing mission-critical deployments in AWS, Azure, and GCP. Expert in CI/CD, containerization, infrastructure as code, and monitoring. Proven track record of improving deployment speed, reliability, and scalability for enterprise applications. Passionate about building resilient cloud architectures and fostering a culture of collaboration and continuous improvement.
+            </p>
+            <ul>
+                <li>Strong leadership and mentoring skills, guiding teams to adopt DevOps best practices.</li>
+                <li>Excellent communicator with experience working cross-functionally with developers, QA, and business stakeholders.</li>
+                <li>Committed to ongoing learning and staying current with emerging technologies.</li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Key Achievements</div>
+            <ul class="achieve-list">
+                <li>
+                    <div class="achieve-title">2023: Cloud Cost Optimization</div>
+                    <div class="achieve-desc">Implemented automated resource scaling and cost monitoring, reducing cloud spend by 30% across three business units.</div>
+                </li>
+                <li>
+                    <div class="achieve-title">2022: Security Automation</div>
+                    <div class="achieve-desc">Developed automated security compliance checks for CI/CD pipelines, resulting in zero critical vulnerabilities in production releases.</div>
+                </li>
+                <li>
+                    <div class="achieve-title">2021: DevOps Transformation</div>
+                    <div class="achieve-desc">Led company-wide DevOps adoption, increasing deployment frequency from monthly to daily and reducing incident response time by 50%.</div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Skills</div>
+            <ul class="skills-list" id="skills-list">
+                <li>AWS</li>
+                <li>Azure</li>
+                <li>GCP</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>Terraform</li>
+                <li>Ansible</li>
+                <li>Jenkins</li>
+                <li>Git</li>
+                <li>CI/CD</li>
+                <li>Linux</li>
+                <li>Prometheus</li>
+                <li>Grafana</li>
+                <li>Scripting (Python, Bash)</li>
+                <li>Monitoring & Logging</li>
+                <li>Agile & Scrum</li>
+                <li>Cloud Security</li>
+                <li>Cost Optimization</li>
+                <li>Incident Management</li>
+                <li>Team Leadership</li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Experience</div>
+            <ul class="exp-list">
+                <li>
+                    <div class="exp-role">Lead DevOps Engineer</div>
+                    <div class="exp-company">TechNova Inc.</div>
+                    <div class="exp-date">Jan 2021 - Present</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Architected and implemented CI/CD pipelines using Jenkins, GitHub Actions, and Terraform for microservices on AWS and Kubernetes.</li>
+                            <li>Reduced deployment times by 60% and improved reliability through automated testing and monitoring.</li>
+                            <li>Led migration from legacy infrastructure to containerized solutions, saving $200K annually.</li>
+                            <li>Mentored a team of 6 engineers in DevOps best practices and cloud automation.</li>
+                            <li>Designed and enforced cloud security policies, achieving 100% compliance in audits.</li>
+                            <li>Collaborated with development teams to integrate automated performance testing in pipelines.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="exp-role">DevOps Engineer</div>
+                    <div class="exp-company">CloudWorks Solutions</div>
+                    <div class="exp-date">Jul 2017 - Dec 2020</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Deployed and managed scalable infrastructure on Azure and GCP using Ansible and Terraform.</li>
+                            <li>Implemented centralized logging and monitoring with ELK stack and Prometheus.</li>
+                            <li>Automated build and release processes, reducing manual errors by 80%.</li>
+                            <li>Developed disaster recovery plans and automated backup solutions for critical workloads.</li>
+                            <li>Worked with QA teams to integrate automated regression testing in CI/CD workflows.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="exp-role">Systems Engineer</div>
+                    <div class="exp-company">Innovatech</div>
+                    <div class="exp-date">May 2015 - Jun 2017</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Managed Linux servers and automated routine tasks using Bash and Python scripts.</li>
+                            <li>Supported application deployments and troubleshooting in production environments.</li>
+                            <li>Maintained configuration management using Puppet and Ansible.</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Education</div>
+            <ul class="edu-list">
+                <li>
+                    <div class="edu-degree">B.Sc. Computer Science</div>
+                    <div class="edu-school">University of Washington</div>
+                    <div class="edu-date">2011 - 2015</div>
+                </li>
+                <li>
+                    <div class="edu-degree">Cloud Computing Specialization</div>
+                    <div class="edu-school">Coursera/University of Illinois</div>
+                    <div class="edu-date">2016</div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Certifications</div>
+            <ul class="cert-list">
+                <li>
+                    <div class="cert-title">AWS Certified DevOps Engineer – Professional</div>
+                    <div class="cert-org">Amazon Web Services</div>
+                    <div class="cert-date">2022</div>
+                </li>
+                <li>
+                    <div class="cert-title">Certified Kubernetes Administrator (CKA)</div>
+                    <div class="cert-org">Cloud Native Computing Foundation</div>
+                    <div class="cert-date">2021</div>
+                </li>
+                <li>
+                    <div class="cert-title">Microsoft Certified: Azure DevOps Engineer Expert</div>
+                    <div class="cert-org">Microsoft</div>
+                    <div class="cert-date">2020</div>
+                </li>
+                <li>
+                    <div class="cert-title">HashiCorp Certified: Terraform Associate</div>
+                    <div class="cert-org">HashiCorp</div>
+                    <div class="cert-date">2021</div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Projects</div>
+            <ul class="projects-list">
+                <li>
+                    <div class="proj-title">Cloud Infrastructure Automation</div>
+                    <a class="proj-link" href="https://github.com/alexjohnson/cloud-infra" target="_blank">GitHub</a>
+                    <div class="proj-desc">
+                        Automated provisioning and scaling of cloud resources using Terraform and Ansible, supporting multi-cloud deployments and zero-downtime releases.
+                    </div>
+                </li>
+                <li>
+                    <div class="proj-title">Kubernetes Monitoring Suite</div>
+                    <a class="proj-link" href="https://github.com/alexjohnson/k8s-monitoring" target="_blank">GitHub</a>
+                    <div class="proj-desc">
+                        Developed a monitoring solution for Kubernetes clusters using Prometheus, Grafana, and custom alerting rules for proactive incident response.
+                    </div>
+                </li>
+                <li>
+                    <div class="proj-title">CI/CD Pipeline Templates</div>
+                    <a class="proj-link" href="https://github.com/alexjohnson/cicd-templates" target="_blank">GitHub</a>
+                    <div class="proj-desc">
+                        Created reusable pipeline templates for Jenkins and GitHub Actions, enabling rapid onboarding and consistent deployment practices.
+                    </div>
+                </li>
+                <li>
+                    <div class="proj-title">Cloud Security Automation</div>
+                    <a class="proj-link" href="https://github.com/alexjohnson/cloud-security" target="_blank">GitHub</a>
+                    <div class="proj-desc">
+                        Built automated security scanning and compliance reporting tools for cloud environments, integrating with CI/CD pipelines.
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Languages</div>
+            <ul class="skills-list">
+                <li>English (Native)</li>
+                <li>Spanish (Professional)</li>
+                <li>French (Conversational)</li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-title">Interests</div>
+            <ul class="skills-list">
+                <li>Cloud Computing</li>
+                <li>Open Source</li>
+                <li>Automation</li>
+                <li>Machine Learning</li>
+                <li>DevOps Community Events</li>
+                <li>Travel & Hiking</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        // Highlight skill on click
+        document.querySelectorAll('#skills-list li').forEach(function(skill) {
+            skill.addEventListener('click', function() {
+                skill.style.background = '#00bfae';
+                skill.style.color = '#fff';
+                setTimeout(function() {
+                    skill.style.background = '';
+                    skill.style.color = '';
+                }, 800);
+            });
+        });
+        // Simple fade-in animation
+        document.querySelectorAll('.section').forEach(function(section, i) {
+            section.style.opacity = 0;
+            setTimeout(function() {
+                section.style.transition = 'opacity 0.8s';
+                section.style.opacity = 1;
+            }, 200 + i * 200);
+        });
+    </script>
+</body>
+</html>
